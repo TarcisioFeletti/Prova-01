@@ -137,9 +137,9 @@
                       </Group>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtTipoLog" alignment="1" pref="80" max="32767" attributes="0"/>
-                          <Component id="txtNumeroFuncionarios" alignment="1" max="32767" attributes="0"/>
-                          <Component id="txtVersao" max="32767" attributes="0"/>
+                          <Component id="txtFieldTipoLog" alignment="1" pref="80" max="32767" attributes="0"/>
+                          <Component id="txtFieldNumeroFuncionarios" alignment="1" max="32767" attributes="0"/>
+                          <Component id="txtFieldVersao" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -151,17 +151,17 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblNumeroFuncionarios" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNumeroFuncionarios" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFieldNumeroFuncionarios" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblTipoLog" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtTipoLog" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFieldTipoLog" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="32" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblVersão" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtVersao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFieldVersao" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -174,7 +174,7 @@
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rios"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNumeroFuncionarios">
+            <Component class="javax.swing.JTextField" name="txtFieldNumeroFuncionarios">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -184,7 +184,7 @@
                 <Property name="text" type="java.lang.String" value="Log:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtTipoLog">
+            <Component class="javax.swing.JTextField" name="txtFieldTipoLog">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -194,7 +194,7 @@
                 <Property name="text" type="java.lang.String" value="Versao"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtVersao">
+            <Component class="javax.swing.JTextField" name="txtFieldVersao">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>

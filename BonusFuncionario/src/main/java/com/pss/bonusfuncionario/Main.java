@@ -5,6 +5,8 @@
  */
 package com.pss.bonusfuncionario;
 
+import com.pss.bonusfuncionario.Presenter.ProcessaBonusPresenter;
+import com.pss.bonusfuncionario.Model.Funcionario;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +16,7 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String args[]){
         ArrayList<Funcionario> listaFunc = new ArrayList<>();
-        ProcessaBonus processadora = new ProcessaBonus();
+        ProcessaBonusPresenter processadora = new ProcessaBonusPresenter();
         
         listaFunc.add(new Funcionario("João", "Programador", 3, 10, 65, 1250.00));
         listaFunc.add(new Funcionario("Fabricio", "Gerente", 6, 100, 80, 2250.00));

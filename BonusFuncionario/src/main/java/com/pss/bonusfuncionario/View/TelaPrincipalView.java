@@ -7,6 +7,8 @@ package com.pss.bonusfuncionario.View;
 
 import javax.swing.JDesktopPane;
 import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JTextField;
 
 /**
  *
@@ -35,11 +37,11 @@ public class TelaPrincipalView extends javax.swing.JFrame {
         desktop = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         lblNumeroFuncionarios = new javax.swing.JLabel();
-        txtNumeroFuncionarios = new javax.swing.JTextField();
+        txtFieldNumeroFuncionarios = new javax.swing.JTextField();
         lblTipoLog = new javax.swing.JLabel();
-        txtTipoLog = new javax.swing.JTextField();
+        txtFieldTipoLog = new javax.swing.JTextField();
         lblVersão = new javax.swing.JLabel();
-        txtVersao = new javax.swing.JTextField();
+        txtFieldVersao = new javax.swing.JTextField();
         menuTelaPrincipal = new javax.swing.JMenuBar();
         opcaoFuncionarioMenu = new javax.swing.JMenu();
         opcaoManterFuncionario = new javax.swing.JMenuItem();
@@ -56,15 +58,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
 
         lblNumeroFuncionarios.setText("Funcionários");
 
-        txtNumeroFuncionarios.setEditable(false);
+        txtFieldNumeroFuncionarios.setEditable(false);
 
         lblTipoLog.setText("Log:");
 
-        txtTipoLog.setEditable(false);
+        txtFieldTipoLog.setEditable(false);
 
         lblVersão.setText("Versao");
 
-        txtVersao.setEditable(false);
+        txtFieldVersao.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,9 +80,9 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                     .addComponent(lblVersão))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtTipoLog, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                    .addComponent(txtNumeroFuncionarios, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtVersao))
+                    .addComponent(txtFieldTipoLog, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(txtFieldNumeroFuncionarios, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtFieldVersao))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -89,15 +91,15 @@ public class TelaPrincipalView extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblNumeroFuncionarios)
-                    .addComponent(txtNumeroFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldNumeroFuncionarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoLog)
-                    .addComponent(txtTipoLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldTipoLog, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblVersão)
-                    .addComponent(txtVersao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtFieldVersao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -197,6 +199,31 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     public JMenuItem getOpcaoManterFuncionario() {
         return opcaoManterFuncionario;
     }
+
+    public JRadioButtonMenuItem getRadioButtonJSON() {
+        return radioButtonJSON;
+    }
+
+    public JRadioButtonMenuItem getRadioButtonTXT() {
+        return radioButtonTXT;
+    }
+
+    public JRadioButtonMenuItem getRadioButtonXML() {
+        return radioButtonXML;
+    }
+
+    public JTextField getTxtFieldNumeroFuncionarios() {
+        return txtFieldNumeroFuncionarios;
+    }
+
+    public JTextField getTxtFieldTipoLog() {
+        return txtFieldTipoLog;
+    }
+
+    public JTextField getTxtFieldVersao() {
+        return txtFieldVersao;
+    }
+    
     
     
 
@@ -217,8 +244,8 @@ public class TelaPrincipalView extends javax.swing.JFrame {
     private javax.swing.JRadioButtonMenuItem radioButtonJSON;
     private javax.swing.JRadioButtonMenuItem radioButtonTXT;
     private javax.swing.JRadioButtonMenuItem radioButtonXML;
-    private javax.swing.JTextField txtNumeroFuncionarios;
-    private javax.swing.JTextField txtTipoLog;
-    private javax.swing.JTextField txtVersao;
+    private javax.swing.JTextField txtFieldNumeroFuncionarios;
+    private javax.swing.JTextField txtFieldTipoLog;
+    private javax.swing.JTextField txtFieldVersao;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pss.bonusfuncionario;
+package com.pss.bonusfuncionario.Presenter;
 
 /**
  *
  * @author tarci
  */
-public interface Bonus {
-    public double calcular(Funcionario funcionario);
-    public boolean aceita(Funcionario funcionario);
+public class ManterFuncionarioPresenter {
+    
 }

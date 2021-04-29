@@ -5,19 +5,49 @@
  */
 package com.pss.bonusfuncionario.View;
 
+import javax.swing.JButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author tarci
  */
-public class BuscarFuncionarioView extends javax.swing.JFrame {
+public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form BuscarFuncionarioView
      */
     public BuscarFuncionarioView() {
         initComponents();
-        this.setLocationRelativeTo(this.getParent());
-        setVisible(true);
+    }
+
+    public JButton getBtnBuscar() {
+        return btnBuscar;
+    }
+
+    public JButton getBtnFechar() {
+        return btnFechar;
+    }
+
+    public JButton getBtnNovo() {
+        return btnNovo;
+    }
+
+    public JButton getBtnVerBonus() {
+        return btnVerBonus;
+    }
+
+    public JButton getBtnVizualizar() {
+        return btnVizualizar;
+    }
+
+    public JTable getTableFuncionarios() {
+        return tableFuncionarios;
+    }
+
+    public JTextField getTxtFieldBuscar() {
+        return txtFieldBuscar;
     }
     
     
@@ -41,11 +71,14 @@ public class BuscarFuncionarioView extends javax.swing.JFrame {
         btnNovo = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 400));
 
         lblBuscar.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblBuscar.setText("Buscar");
+
+        txtFieldBuscar.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         btnBuscar.setText("Buscar");
 
@@ -104,7 +137,7 @@ public class BuscarFuncionarioView extends javax.swing.JFrame {
                     .addComponent(btnBuscar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVizualizar)
                     .addComponent(btnVerBonus)
@@ -116,40 +149,6 @@ public class BuscarFuncionarioView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarFuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarFuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarFuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarFuncionarioView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new BuscarFuncionarioView().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscar;
