@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pss.bonusfuncionario;
+package com.pss.bonusfuncionario.Model;
 
 /**
  *
  * @author tarci
  */
-public class BonusDistancia implements Bonus {
-    private static BonusDistancia instancia = null;
+public class BonusDistanciaModel implements IBonusPresenter {
+    private static BonusDistanciaModel instancia = null;
     
-    private BonusDistancia(){
+    private BonusDistanciaModel(){
     }
     
     @Override
@@ -40,9 +40,9 @@ public class BonusDistancia implements Bonus {
         }
     }
     
-    public static BonusDistancia getInstance(){
+    public static BonusDistanciaModel getInstance(){
         if(instancia == null){
-            instancia = new BonusDistancia();
+            instancia = new BonusDistanciaModel();
         }
         return instancia;
     }

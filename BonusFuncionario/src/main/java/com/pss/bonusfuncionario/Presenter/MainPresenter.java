@@ -5,15 +5,13 @@
  */
 package com.pss.bonusfuncionario.Presenter;
 
-import com.pss.bonusfuncionario.View.TelaPrincipal;
-
 
 /**
  *
  * @author tarci
  */
-public class MainPresenter {
+public class MainPresenter {    
     public static void main(String[] args){
-        new TelaPrincipal();
+        new TelaPrincipalPresenter().iniciarGUI();
     }
 }

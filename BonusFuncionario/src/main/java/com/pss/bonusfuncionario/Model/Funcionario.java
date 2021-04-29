@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pss.bonusfuncionario;
+package com.pss.bonusfuncionario.Model;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Funcionario {
     private double salarioFinal;
     private int produtividade;
     
-    Funcionario(String nome, String cargo, int numFaltas, int distanciaDoTrabalho, int produtividade, double salarioBase){
+    public Funcionario(String nome, String cargo, int numFaltas, int distanciaDoTrabalho, int produtividade, double salarioBase){
         this.nome = nome;
         this.cargo = cargo;
         this.numFaltas = numFaltas;

@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.pss.bonusfuncionario;
+package com.pss.bonusfuncionario.Model;
 
 /**
  *
  * @author tarci
  */
-public class BonusProdutividade implements Bonus {
-    private static BonusProdutividade instancia = null;
+public class BonusProdutividadeModel implements IBonusPresenter {
+    private static BonusProdutividadeModel instancia = null;
     
-    private BonusProdutividade(){
+    private BonusProdutividadeModel(){
     }
     @Override
     public boolean aceita(Funcionario funcionario) {
@@ -38,9 +38,9 @@ public class BonusProdutividade implements Bonus {
         }
     }
     
-    public static BonusProdutividade getInstance(){
+    public static BonusProdutividadeModel getInstance(){
         if(instancia == null){
-            instancia = new BonusProdutividade();
+            instancia = new BonusProdutividadeModel();
         }
         return instancia;
     }
