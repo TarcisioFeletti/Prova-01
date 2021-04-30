@@ -71,6 +71,7 @@ public class CalcularSalarioView extends javax.swing.JInternalFrame {
         lblDataDoCalculo = new javax.swing.JLabel();
         btnFechar = new javax.swing.JButton();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(700, 400));

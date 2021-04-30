@@ -27,7 +27,7 @@ public class TelaPrincipalPresenter {
         tela.getOpcaoManterFuncionario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                //new ManterFuncionarioPresenter().iniciarTela(tela.getDesktop());
+                new ManterFuncionarioPresenter(null, tela.getDesktop());
             }
         });
         

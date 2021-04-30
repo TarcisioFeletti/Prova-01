@@ -9,39 +9,34 @@ package com.pss.bonusfuncionario.Model;
  *
  * @author tarci
  */
-public class BonusDistanciaModel implements IBonusPresenter {
+public class BonusDistanciaModel implements IBonusModel {
+
     private static BonusDistanciaModel instancia = null;
-    
-    private BonusDistanciaModel(){
+
+    private BonusDistanciaModel() {
     }
-    
+
     @Override
-    public double calcular(Funcionario funcionario){
-        if (this.aceita(funcionario)) {
-            double valorBonus;
-            if(funcionario.getDistanciaDoTrabalho()<=100){
-                valorBonus = 100;
-            }else if(funcionario.getDistanciaDoTrabalho()>100 && funcionario.getDistanciaDoTrabalho()<=200){
-                valorBonus = 250;
-            }else{
-                valorBonus = 500;
-            }
-            return valorBonus;
-        } else {
-            return 0;
+    public void calcular(FuncionarioModel funcionario) throws MenorQueZeroException {
+        if (funcionario.getDistanciaDoTrabalho() <= 20) {
+            funcionario.setPorcentagemBonusDistancia(0.01);
+        } else if (funcionario.getDistanciaDoTrabalho() > 20 && funcionario.getDistanciaDoTrabalho() <= 50) {
+            funcionario.setPorcentagemBonusDistancia(0.02);
+        } else if (funcionario.getDistanciaDoTrabalho() > 50 && funcionario.getDistanciaDoTrabalho() <= 100) {
+            funcionario.setPorcentagemBonusDistancia(0.05);
+        } else if (funcionario.getDistanciaDoTrabalho() > 100 && funcionario.getDistanciaDoTrabalho() <= 150) {
+            funcionario.setPorcentagemBonusDistancia(0.08);
+        } else if (funcionario.getDistanciaDoTrabalho() > 150 && funcionario.getDistanciaDoTrabalho() <= 200) {
+            funcionario.setPorcentagemBonusDistancia(0.1);
+        } else if (funcionario.getDistanciaDoTrabalho() > 200) {
+            funcionario.setPorcentagemBonusDistancia(0.15);
+        } else{
+            throw new MenorQueZeroException();
         }
     }
-    @Override
-    public boolean aceita(Funcionario funcionario){
-        if (funcionario.getDistanciaDoTrabalho()>20) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    public static BonusDistanciaModel getInstance(){
-        if(instancia == null){
+
+    public static BonusDistanciaModel getInstance() {
+        if (instancia == null) {
             instancia = new BonusDistanciaModel();
         }
         return instancia;

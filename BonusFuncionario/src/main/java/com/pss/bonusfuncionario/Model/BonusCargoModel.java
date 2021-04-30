@@ -9,34 +9,32 @@ package com.pss.bonusfuncionario.Model;
  *
  * @author tarci
  */
-public class BonusCargoModel implements IBonusPresenter{
+public class BonusCargoModel implements IBonusModel {
+
     private static BonusCargoModel instancia = null;
-    
-    private BonusCargoModel(){
+
+    private BonusCargoModel() {
     }
-    
+
     @Override
-    public boolean aceita(Funcionario funcionario){
-        return funcionario.getCargo().equalsIgnoreCase("programador") == false;
-    }
-    
-    @Override
-    public double calcular(Funcionario funcionario){
-        if(this.aceita(funcionario)){
-            double valorBonus;
-            if(funcionario.getCargo().equalsIgnoreCase("Gerente")){
-                valorBonus = 500;
-            }else{
-                valorBonus = 250;
-            }
-            return valorBonus;
-        }else{
-            return 0;
+    public void calcular(FuncionarioModel funcionario) {
+        if (funcionario.getCargo().equalsIgnoreCase("Gerente")) {
+            funcionario.setPorcentagemBonusCargo(0.15);
+        }else if(funcionario.getCargo().equalsIgnoreCase("Analista de TI")){
+            funcionario.setPorcentagemBonusCargo(0.1);
+        }else if(funcionario.getCargo().equalsIgnoreCase("Supervisor")){
+            funcionario.setPorcentagemBonusCargo(0.08);
+        }else if(funcionario.getCargo().equalsIgnoreCase("Programador")){
+            funcionario.setPorcentagemBonusCargo(0.05);
+        }else if(funcionario.getCargo().equalsIgnoreCase("Trainee")){
+            funcionario.setPorcentagemBonusCargo(0.02);
+        }else if(funcionario.getCargo().equalsIgnoreCase("Assistente")){
+            funcionario.setPorcentagemBonusCargo(0.01);
         }
     }
-    
-    public static BonusCargoModel getInstance(){
-        if(instancia == null){
+
+    public static BonusCargoModel getInstance() {
+        if (instancia == null) {
             instancia = new BonusCargoModel();
         }
         return instancia;

@@ -71,6 +71,7 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
         btnNovo = new javax.swing.JButton();
         btnFechar = new javax.swing.JButton();
 
+        setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(800, 400));
@@ -87,7 +88,7 @@ public class BuscarFuncionarioView extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Funcionário", "Data", "Salário Base(R$)", "Bônus(R$)", "Salário(R$)"
+                "Id", "Funcionário", "Data", "Salário Base(R$)", "Bônus(R$)", "Salário(R$)"
             }
         ));
         jScrollPane1.setViewportView(tableFuncionarios);
