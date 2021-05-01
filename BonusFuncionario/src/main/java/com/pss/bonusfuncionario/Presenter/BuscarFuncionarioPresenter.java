@@ -52,6 +52,7 @@ public class BuscarFuncionarioPresenter {
                     } else {
                         JTable table = tela.getTableFuncionarios();
                         DefaultTableModel model = (DefaultTableModel) table.getModel();
+                        model.setNumRows(0);
                         for (FuncionarioModel funcionario : funcionarioCollection) {
                             if (funcionario.getBonusCollection().isEmpty()) {
                                 model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getAdmissao(),

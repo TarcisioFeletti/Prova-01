@@ -17,7 +17,7 @@ public class BonusAssiduidadeModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException{
+    public void calcular(HistoricoDeBonus bonus) throws RuntimeException{
         if (bonus.getNumFaltas()== 0) {
             bonus.setPorcentagemBonusAssiduidade(0.1);
             bonus.calcularValorBonusAssiduidade();
@@ -28,7 +28,7 @@ public class BonusAssiduidadeModel implements IBonusModel {
             bonus.setPorcentagemBonusAssiduidade(0.01);
             bonus.calcularValorBonusAssiduidade();
         } else {
-            throw new MenorQueZeroException();
+            throw new RuntimeException("Nunca vi uma pessoa ter menos de 0 faltas");
         }
     }
 

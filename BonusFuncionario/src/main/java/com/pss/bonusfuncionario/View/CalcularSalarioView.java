@@ -76,7 +76,11 @@ public class CalcularSalarioView extends javax.swing.JInternalFrame {
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(700, 400));
 
-        txtFormatadoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        try {
+            txtFormatadoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         txtFormatadoData.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         btnBuscar.setText("Buscar");
@@ -88,14 +92,18 @@ public class CalcularSalarioView extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Funconário", "Data", "Salário Base(R$)", "Bônus(R$)", "Salário(R$)"
+                "Id", "Funconário", "Data", "Salário Base(R$)", "Bônus(R$)", "Salário(R$)"
             }
         ));
         jScrollPane1.setViewportView(tableCalcularSalarios);
 
         btnCalcular.setText("Calcular");
 
-        txtFormatadoDataDoCalculo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        try {
+            txtFormatadoDataDoCalculo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
         txtFormatadoDataDoCalculo.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
 
         lblDataDoCalculo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
