@@ -39,10 +39,6 @@ public abstract class ManterFuncionarioStatePresenter {
     public void fechar(ManterFuncionarioView tela) {
         tela.doDefaultCloseAction();
     }
-    
-    public void removerListeners(){
-        //Adicionar o método para remover os listeners
-    }
 
     public ManterFuncionarioPresenter getPresenter() {
         return presenter;

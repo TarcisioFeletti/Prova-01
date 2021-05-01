@@ -5,61 +5,46 @@
  */
 package com.pss.bonusfuncionario.Model;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 /**
  *
  * @author tarci
  */
 public class FuncionarioModel {
     private String nome;
-    private String cargo;
-    private int numFaltas;
-    private int distanciaDoTrabalho;
-    private double salarioBase;
-    private double salarioFinal;
     private int id;
     private int idade;
-    private int tempoDeServico;
-    private double porcentagemBonusAssiduidade;
-    private double porcentagemBonusTempoDeServico;
-    private double porcentagemBonusCargo;
-    private double porcentagemBonusDistancia;
-    
-    public FuncionarioModel(String nome, String cargo, int numFaltas, int distanciaDoTrabalho, 
-            double salarioBase, int idade, int tempoDeServico){
+    private LocalDate admissao;
+    private double salarioBase;
+    private double salarioFinal;
+    private boolean funcionarioDoMes;
+    private int numFaltas;
+    private String cargo;
+    private int bonusGeneroso;
+    private ArrayList<HistoricoDeBonus> historicoBonusCollection;
+
+    public FuncionarioModel(String nome, int idade, LocalDate admissao, double salarioBase, 
+            boolean funcionarioDoMes, int numFaltas, String cargo, 
+            int bonusGeneroso) {
         this.nome = nome;
-        this.cargo = cargo;
-        this.numFaltas = numFaltas;
-        this.distanciaDoTrabalho = distanciaDoTrabalho;
-        this.salarioBase = salarioBase;
-        this.salarioFinal = salarioBase;
         this.idade = idade;
-        this.tempoDeServico = tempoDeServico;
+        this.admissao = admissao;
+        this.salarioBase = salarioBase;
+        this.funcionarioDoMes = funcionarioDoMes;
+        this.numFaltas = numFaltas;
+        this.cargo = cargo;
+        this.bonusGeneroso = bonusGeneroso;
+        this.historicoBonusCollection = new ArrayList<>();
     }
+    
+    
 
     public String getNome() {
         return nome;
     }
-
-    public String getCargo() {
-        return cargo;
-    }
-
-    public int getNumFaltas() {
-        return numFaltas;
-    }
-
-    public int getDistanciaDoTrabalho() {
-        return distanciaDoTrabalho;
-    }
-
-    public double getSalarioBase() {
-        return salarioBase;
-    }
-
-    public double getSalarioFinal() {
-        return salarioFinal;
-    }
-
+    
     public int getId() {
         return id;
     }
@@ -72,46 +57,44 @@ public class FuncionarioModel {
         return idade;
     }
 
-    public int getTempoDeServico() {
-        return tempoDeServico;
+    public LocalDate getAdmissao() {
+        return admissao;
+    }  
+
+    public double getSalarioBase() {
+        return salarioBase;
     }
 
-    public double getPorcentagemBonusAssiduidade() {
-        return porcentagemBonusAssiduidade;
+    public boolean isFuncionarioDoMes() {
+        return funcionarioDoMes;
     }
 
-    public double getPorcentagemBonusTempoDeServico() {
-        return porcentagemBonusTempoDeServico;
+    public int getNumFaltas() {
+        return numFaltas;
     }
 
-    public double getPorcentagemBonusCargo() {
-        return porcentagemBonusCargo;
+    public String getCargo() {
+        return cargo;
     }
 
-    public double getPorcentagemBonusDistancia() {
-        return porcentagemBonusDistancia;
+    public int getBonusGeneroso() {
+        return bonusGeneroso;
     }
-    
-    
-    
+
+    public ArrayList<HistoricoDeBonus> getBonusCollection() {
+        return historicoBonusCollection;
+    }
+
+    public double getSalarioFinal() {
+        return salarioFinal;
+    }
+
     public void setSalarioFinal(double salarioFinal) {
         this.salarioFinal = salarioFinal;
     }
-
-    public void setPorcentagemBonusAssiduidade(double porcentagemBonusAssiduidade) {
-        this.porcentagemBonusAssiduidade = porcentagemBonusAssiduidade;
-    }
-
-    public void setPorcentagemBonusTempoDeServico(double porcentagemBonusTempoDeServico) {
-        this.porcentagemBonusTempoDeServico = porcentagemBonusTempoDeServico;
-    }
-
-    public void setPorcentagemBonusCargo(double porcentagemBonusCargo) {
-        this.porcentagemBonusCargo = porcentagemBonusCargo;
-    }
-
-    public void setPorcentagemBonusDistancia(double porcentagemBonusDistancia) {
-        this.porcentagemBonusDistancia = porcentagemBonusDistancia;
+    
+    public void adicionarBonus(HistoricoDeBonus bonus){
+        historicoBonusCollection.add(bonus);
     }
     
     

@@ -9,5 +9,5 @@ package com.pss.bonusfuncionario.Model;
  * @author tarci
  */
 public interface IBonusModel {
-    public void calcular(FuncionarioModel funcionario) throws MenorQueZeroException;
+    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException;
 }

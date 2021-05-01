@@ -17,13 +17,16 @@ public class BonusAssiduidadeModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(FuncionarioModel funcionario) throws MenorQueZeroException{
-        if (funcionario.getTempoDeServico() == 0) {
-            funcionario.setPorcentagemBonusAssiduidade(0.1);
-        } else if (funcionario.getTempoDeServico() >= 1 && funcionario.getTempoDeServico() <= 3) {
-            funcionario.setPorcentagemBonusAssiduidade(0.05);
-        } else if (funcionario.getTempoDeServico() >= 4) {
-            funcionario.setPorcentagemBonusAssiduidade(0.01);
+    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException{
+        if (bonus.getNumFaltas()== 0) {
+            bonus.setPorcentagemBonusAssiduidade(0.1);
+            bonus.calcularValorBonusAssiduidade();
+        } else if (bonus.getNumFaltas()>= 1 && bonus.getNumFaltas()<= 3) {
+            bonus.setPorcentagemBonusAssiduidade(0.05);
+            bonus.calcularValorBonusAssiduidade();
+        } else if (bonus.getNumFaltas()>= 4) {
+            bonus.setPorcentagemBonusAssiduidade(0.01);
+            bonus.calcularValorBonusAssiduidade();
         } else {
             throw new MenorQueZeroException();
         }

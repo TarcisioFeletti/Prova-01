@@ -44,13 +44,30 @@ public class BuscarFuncionarioPresenter {
         tela.getBtnBuscar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                List<FuncionarioModel> funcionarioCollection = FuncionarioCollection.
-                        getInstancia().lerFuncionario(tela.getTxtFieldBuscar().getText());
-                JTable table = tela.getTableFuncionarios();
-                DefaultTableModel model = (DefaultTableModel) table.getModel();
-                for (FuncionarioModel funcionario : funcionarioCollection) {
-                    model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getIdade(),
-                        funcionario.getCargo(), funcionario.getSalarioBase()});
+                if (!tela.getTxtFieldBuscar().getText().isEmpty()) {
+                    List<FuncionarioModel> funcionarioCollection = FuncionarioCollection.
+                            getInstancia().lerFuncionario(tela.getTxtFieldBuscar().getText());
+                    if (funcionarioCollection.isEmpty()) {
+                        JOptionPane.showMessageDialog(tela, "Opa, acho que esse funcionário não está entre nós");
+                    } else {
+                        JTable table = tela.getTableFuncionarios();
+                        DefaultTableModel model = (DefaultTableModel) table.getModel();
+                        for (FuncionarioModel funcionario : funcionarioCollection) {
+                            if (funcionario.getBonusCollection().isEmpty()) {
+                                model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getAdmissao(),
+                                    funcionario.getSalarioBase(),
+                                    "0",
+                                    funcionario.getSalarioBase()});
+                            } else {
+                                model.addRow(new Object[]{funcionario.getId(), funcionario.getNome(), funcionario.getAdmissao(),
+                                    funcionario.getSalarioBase(),
+                                    funcionario.getBonusCollection().get(funcionario.getBonusCollection().size() - 1).somarValorBonus(),
+                                    funcionario.getSalarioFinal()});
+                            }
+                        }
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(tela, "É sério? Digita um nome meu consagrado!");
                 }
             }
         });
@@ -63,21 +80,35 @@ public class BuscarFuncionarioPresenter {
         tela.getBtnVerBonus().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new HistoricoBonusPresenter().iniciarDialog(desktop);
+                JTable table = tela.getTableFuncionarios();
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                try {
+                    Vector dadosLinha = model.getDataVector().elementAt(table.getSelectedRow());
+                    FuncionarioModel funcionario = FuncionarioCollection.getInstancia().
+                            lerFuncionario(Integer.parseInt(dadosLinha.get(0).toString()));
+                    new HistoricoBonusPresenter(funcionario).iniciarDialog(desktop);
+                } catch (IndexOutOfBoundsException ex) {
+                    if (table.getRowCount() <= 0) {
+                        JOptionPane.showMessageDialog(tela, "Eu só acho que voce precisa de algum "
+                                + "\nfuncionário para ver o histórico dele não?");
+                    } else {
+                        JOptionPane.showMessageDialog(tela, "Acho que falta alguma coisa! \n Tenta selecionar uma linha");
+                    }
+                }
             }
         });
         tela.getBtnVizualizar().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                JTable table = tela.getTableFuncionarios();
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
                 try {
-                    JTable table = tela.getTableFuncionarios();
-                    DefaultTableModel model = (DefaultTableModel) table.getModel();
                     Vector dadosLinha = model.getDataVector().elementAt(table.getSelectedRow());
                     FuncionarioModel funcionario = FuncionarioCollection.getInstancia().
                             lerFuncionario(Integer.parseInt(dadosLinha.get(0).toString()));
                     new ManterFuncionarioPresenter(funcionario, desktop);
                 } catch (IndexOutOfBoundsException ex) {
-                    JOptionPane.showMessageDialog(tela, ex.getMessage());
+                    JOptionPane.showMessageDialog(tela, "Lista Vazia");
                 }
 
             }

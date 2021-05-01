@@ -15,7 +15,7 @@ import java.util.List;
  */
 public class FuncionarioCollection {
 
-    private List<FuncionarioModel> funcionarioCollection;
+    private final List<FuncionarioModel> funcionarioCollection;
     private static FuncionarioCollection instancia;
 
     public FuncionarioCollection() {
@@ -41,7 +41,7 @@ public class FuncionarioCollection {
     public List<FuncionarioModel> lerFuncionario(String nomeFuncionario) {
         List<FuncionarioModel> retornoFuncionarioCollection = new ArrayList<>();
         for (FuncionarioModel funcionario : this.funcionarioCollection) {
-            if (funcionario.getNome().equals(nomeFuncionario)) {
+            if (funcionario.getNome().contains(nomeFuncionario)) {
                 retornoFuncionarioCollection.add(funcionario);
             }
         }
@@ -49,10 +49,21 @@ public class FuncionarioCollection {
     }
 
     public FuncionarioModel lerFuncionario(int id) throws IndexOutOfBoundsException {
-        if (funcionarioCollection.isEmpty()) {
-            throw new IndexOutOfBoundsException("Lista Vazia");
-        } else {
+        if(!funcionarioCollection.isEmpty()){
             return funcionarioCollection.get(id);
+        }else{
+            throw new IndexOutOfBoundsException("Lista Vazia");
+        }
+    }
+    
+    public void update(FuncionarioModel funcionario, int idFuncionario){
+        funcionarioCollection.add(idFuncionario, funcionario);
+    }
+    
+    public void excluir(int id){
+        funcionarioCollection.remove(id);
+        for (int i = id; i < funcionarioCollection.size(); i++){
+            funcionarioCollection.get(i).setId(i);
         }
     }
 

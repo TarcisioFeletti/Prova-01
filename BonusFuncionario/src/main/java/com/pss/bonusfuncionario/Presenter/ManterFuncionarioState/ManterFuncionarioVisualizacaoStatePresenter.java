@@ -5,6 +5,8 @@
  */
 package com.pss.bonusfuncionario.Presenter.ManterFuncionarioState;
 
+import com.pss.bonusfuncionario.Presenter.Command.ManterFuncionarioExcluirCommand;
+import com.pss.bonusfuncionario.Presenter.Command.ManterFuncionarioExibirCommand;
 import com.pss.bonusfuncionario.Presenter.ManterFuncionarioPresenter;
 
 /**
@@ -20,7 +22,7 @@ public class ManterFuncionarioVisualizacaoStatePresenter extends ManterFuncionar
         presenter.getView().getBtnFechar().setText("Fechar");
         presenter.getView().getTxtFieldNome().setEnabled(false);
         presenter.getView().getTxtFieldSalario().setEnabled(false);
-        presenter.getView().getTxtFieldAdmissao().setEnabled(false);
+        presenter.getView().getTxtFormatedFieldAdmissao().setEnabled(false);
         presenter.getView().getTxtFieldFaltas().setEnabled(false);
         presenter.getView().getTxtFieldIdade().setEnabled(false);
         presenter.getView().getComboBoxBonus().setEnabled(false);
@@ -30,18 +32,17 @@ public class ManterFuncionarioVisualizacaoStatePresenter extends ManterFuncionar
     
     @Override
     public void exibir() {
-        
+        new ManterFuncionarioExibirCommand().executar(super.getPresenter());
     }
 
     @Override
     public void editar() {
-        
         super.getPresenter().setEstado(new ManterFuncionarioEdicaoStatePresenter(super.getPresenter()));
     }
 
     @Override
     public void excluir() {
-        
+        new ManterFuncionarioExcluirCommand().executar(super.getPresenter());
         super.fechar(super.getPresenter().getView());
     }
 }

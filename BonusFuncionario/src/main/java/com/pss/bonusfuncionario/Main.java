@@ -7,6 +7,8 @@ package com.pss.bonusfuncionario;
 
 import com.pss.bonusfuncionario.Presenter.ProcessaBonusPresenter;
 import com.pss.bonusfuncionario.Model.FuncionarioModel;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 /**
@@ -15,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Main {
     public static void main(String args[]){
-        ArrayList<FuncionarioModel> listaFunc = new ArrayList<>();
+        /*ArrayList<FuncionarioModel> listaFunc = new ArrayList<>();
         ProcessaBonusPresenter processadora = new ProcessaBonusPresenter();
         
         listaFunc.add(new FuncionarioModel("João", "Programador", 3, 10, 65, 1250.00));
@@ -34,5 +36,6 @@ public class Main {
         System.out.println("O "+listaFunc.get(3).getCargo()+" "+listaFunc.get(3).getNome()+" tem salário final igual a: "+listaFunc.get(3).getSalarioFinal());
         processadora.processar(listaFunc.get(4));
         System.out.println("O "+listaFunc.get(4).getCargo()+" "+listaFunc.get(4).getNome()+" tem salário final igual a: "+listaFunc.get(4).getSalarioFinal());
+    */
     }
 }

@@ -5,6 +5,8 @@
  */
 package com.pss.bonusfuncionario.Model;
 
+import java.time.temporal.ChronoUnit;
+
 /**
  *
  * @author tarci
@@ -22,19 +24,26 @@ public class BonusTempoDeServicoModel implements IBonusModel {
     }
     
     @Override
-    public void calcular(FuncionarioModel funcionario) throws MenorQueZeroException{
-        if(funcionario.getTempoDeServico() == 0){
-            funcionario.setPorcentagemBonusTempoDeServico(0);
-        }else if(funcionario.getTempoDeServico() >= 1 && funcionario.getTempoDeServico() <= 5){
-            funcionario.setPorcentagemBonusTempoDeServico(0.02);
-        }else if(funcionario.getTempoDeServico() >= 6 && funcionario.getTempoDeServico() <= 10){
-            funcionario.setPorcentagemBonusTempoDeServico(0.03);
-        }else if(funcionario.getTempoDeServico() >= 11 && funcionario.getTempoDeServico() <= 15){
-            funcionario.setPorcentagemBonusTempoDeServico(0.08);
-        }else if(funcionario.getTempoDeServico() >= 16 && funcionario.getTempoDeServico() <= 20){
-            funcionario.setPorcentagemBonusTempoDeServico(0.1);
-        }else if(funcionario.getTempoDeServico() >20){
-            funcionario.setPorcentagemBonusTempoDeServico(0.15);
+    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException{
+        long tempoDeServico = bonus.getAdmissao().until(bonus.getDataDoCalculo(), ChronoUnit.YEARS);
+        if(tempoDeServico == 0){
+            bonus.setPorcentagemBonusTempoDeServico(0);
+            bonus.calcularValorBonusTempoDeServico();
+        }else if(tempoDeServico >= 1 && tempoDeServico <= 5){
+            bonus.setPorcentagemBonusTempoDeServico(0.02);
+            bonus.calcularValorBonusFuncionarioDoMes();
+        }else if(tempoDeServico >= 6 && tempoDeServico <= 10){
+            bonus.setPorcentagemBonusTempoDeServico(0.03);
+            bonus.calcularValorBonusFuncionarioDoMes();
+        }else if(tempoDeServico >= 11 && tempoDeServico <= 15){
+            bonus.setPorcentagemBonusTempoDeServico(0.08);
+            bonus.calcularValorBonusFuncionarioDoMes();
+        }else if(tempoDeServico >= 16 && tempoDeServico <= 20){
+            bonus.setPorcentagemBonusTempoDeServico(0.1);
+            bonus.calcularValorBonusFuncionarioDoMes();
+        }else if(tempoDeServico >20){
+            bonus.setPorcentagemBonusTempoDeServico(0.15);
+            bonus.calcularValorBonusFuncionarioDoMes();
         }else{
             throw  new MenorQueZeroException();
         }
