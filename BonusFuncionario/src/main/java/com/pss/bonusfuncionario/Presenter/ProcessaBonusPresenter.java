@@ -5,31 +5,44 @@
  */
 package com.pss.bonusfuncionario.Presenter;
 
-import com.pss.bonusfuncionario.Model.BonusFaltaModel;
-import com.pss.bonusfuncionario.Model.BonusProdutividadeModel;
+import com.pss.bonusfuncionario.Model.BonusAssiduidadeModel;
 import com.pss.bonusfuncionario.Model.BonusCargoModel;
-import com.pss.bonusfuncionario.Model.IBonusPresenter;
-import com.pss.bonusfuncionario.Model.BonusDistanciaModel;
-import com.pss.bonusfuncionario.Model.Funcionario;
+import com.pss.bonusfuncionario.Model.BonusFuncionarioDoMesModel;
+import com.pss.bonusfuncionario.Model.BonusTempoDeServicoModel;
+import com.pss.bonusfuncionario.Model.FuncionarioModel;
+import com.pss.bonusfuncionario.Model.HistoricoDeBonus;
 import java.util.ArrayList;
+import com.pss.bonusfuncionario.Model.IBonusModel;
+import com.pss.bonusfuncionario.Model.MenorQueZeroException;
+import java.time.LocalDate;
 
 /**
  *
  * @author tarci
  */
 public class ProcessaBonusPresenter {
-    private ArrayList<IBonusPresenter> listaBonus = new ArrayList<>();
+    private ArrayList<IBonusModel> listaBonus = new ArrayList<>();
     
     public ProcessaBonusPresenter(){
-        listaBonus.add(BonusDistanciaModel.getInstance());
-        listaBonus.add(BonusFaltaModel.getInstance());
-        listaBonus.add(BonusProdutividadeModel.getInstance());
+        listaBonus.add(BonusTempoDeServicoModel.getInstance());
+        listaBonus.add(BonusAssiduidadeModel.getInstance());
         listaBonus.add(BonusCargoModel.getInstance());
+        listaBonus.add(BonusFuncionarioDoMesModel.getInstance());
     }
     
-    public void processar(Funcionario funcionario){
-        for(IBonusPresenter bonus : listaBonus){
-            funcionario.setSalarioFinal(funcionario.getSalarioFinal() + bonus.calcular(funcionario));
+    public void processar(FuncionarioModel funcionario, LocalDate dataDoCalculo) throws MenorQueZeroException{
+        HistoricoDeBonus historicoBonus = new HistoricoDeBonus(funcionario.getSalarioBase(), 
+                funcionario.getBonusGeneroso(), funcionario.isFuncionarioDoMes(), 
+                funcionario.getNumFaltas(), funcionario.getCargo(), dataDoCalculo, 
+                funcionario.getAdmissao());
+        for(IBonusModel bonus : listaBonus){
+            try {
+                bonus.calcular(historicoBonus);
+            } catch (MenorQueZeroException ex) {
+                throw ex;
+            }
         }
+        funcionario.setSalarioFinal(historicoBonus.somarValorBonus());
+        funcionario.adicionarBonus(historicoBonus);
     }
 }

@@ -5,13 +5,10 @@
  */
 package com.pss.bonusfuncionario.Model;
 
-import com.pss.bonusfuncionario.Model.Funcionario;
-
 /**
  *
  * @author tarci
  */
-public interface IBonusPresenter {
-    public double calcular(Funcionario funcionario);
-    public boolean aceita(Funcionario funcionario);
+public class LogJson implements ILogModel{
+    
 }
