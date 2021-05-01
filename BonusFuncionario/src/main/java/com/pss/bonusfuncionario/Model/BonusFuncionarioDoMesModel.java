@@ -17,7 +17,7 @@ public class BonusFuncionarioDoMesModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException {
+    public void calcular(HistoricoDeBonus bonus) {
         if (bonus.isFuncionarioDoMes()){
             bonus.setPorcentagemBonusFuncionarioDoMes(0.1);
             bonus.calcularValorBonusFuncionarioDoMes();

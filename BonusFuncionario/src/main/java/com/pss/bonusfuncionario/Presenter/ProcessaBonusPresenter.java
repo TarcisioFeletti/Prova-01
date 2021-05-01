@@ -13,7 +13,6 @@ import com.pss.bonusfuncionario.Model.FuncionarioModel;
 import com.pss.bonusfuncionario.Model.HistoricoDeBonus;
 import java.util.ArrayList;
 import com.pss.bonusfuncionario.Model.IBonusModel;
-import com.pss.bonusfuncionario.Model.MenorQueZeroException;
 import java.time.LocalDate;
 
 /**
@@ -30,7 +29,7 @@ public class ProcessaBonusPresenter {
         listaBonus.add(BonusFuncionarioDoMesModel.getInstance());
     }
     
-    public void processar(FuncionarioModel funcionario, LocalDate dataDoCalculo) throws MenorQueZeroException{
+    public void processar(FuncionarioModel funcionario, LocalDate dataDoCalculo) throws RuntimeException{
         HistoricoDeBonus historicoBonus = new HistoricoDeBonus(funcionario.getSalarioBase(), 
                 funcionario.getBonusGeneroso(), funcionario.isFuncionarioDoMes(), 
                 funcionario.getNumFaltas(), funcionario.getCargo(), dataDoCalculo, 
@@ -38,11 +37,11 @@ public class ProcessaBonusPresenter {
         for(IBonusModel bonus : listaBonus){
             try {
                 bonus.calcular(historicoBonus);
-            } catch (MenorQueZeroException ex) {
+            } catch (RuntimeException ex) {
                 throw ex;
             }
         }
-        funcionario.setSalarioFinal(historicoBonus.somarValorBonus());
+        funcionario.setSalarioFinal(historicoBonus.somarValorBonus() + historicoBonus.getSalarioBase());
         funcionario.adicionarBonus(historicoBonus);
     }
 }

@@ -5,8 +5,8 @@
  */
 package com.pss.bonusfuncionario.Presenter.ManterFuncionarioState;
 
+import com.pss.bonusfuncionario.Presenter.Command.ManterFuncionarioEditarCommand;
 import com.pss.bonusfuncionario.Presenter.Command.ManterFuncionarioExibirCommand;
-import com.pss.bonusfuncionario.Presenter.Command.ManterFuncionarioIncluirCommand;
 import com.pss.bonusfuncionario.Presenter.ManterFuncionarioPresenter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,25 +22,25 @@ public class ManterFuncionarioEdicaoStatePresenter extends ManterFuncionarioStat
         presenter.getView().getBtnEditar().setEnabled(false);
         presenter.getView().getBtnExcluir().setEnabled(false);
         presenter.getView().getBtnFechar().setText("Cancelar");
-        presenter.getView().getTxtFieldNome().setEnabled(true);
-        presenter.getView().getTxtFieldSalario().setEnabled(true);
-        presenter.getView().getTxtFormatedFieldAdmissao().setEnabled(true);
-        presenter.getView().getTxtFieldFaltas().setEnabled(true);
-        presenter.getView().getTxtFieldIdade().setEnabled(true);
+        presenter.getView().getTxtFieldNome().setEditable(true);
+        presenter.getView().getTxtFieldSalario().setEditable(true);
+        presenter.getView().getTxtFormatedFieldAdmissao().setEditable(true);
+        presenter.getView().getTxtFieldFaltas().setEditable(true);
+        presenter.getView().getTxtFieldIdade().setEditable(true);
         presenter.getView().getComboBoxBonus().setEnabled(true);
         presenter.getView().getComboBoxCargo().setEnabled(true);
-        
-        exibir();
+        presenter.getView().getCheckBoxFuncionarioDoMes().setEnabled(true);
+        this.exibir();
+        this.iniciarListeners();
     }
     
     @Override
     public void incluir(){
-        new ManterFuncionarioIncluirCommand().executar(super.getPresenter());
+        new ManterFuncionarioEditarCommand().executar(super.getPresenter());
         super.fechar(super.getPresenter().getView());
     }
     
     public void iniciarListeners(){
-        super.getPresenter().getView().getBtnSalvar().removeAll();
         super.getPresenter().getView().getBtnSalvar().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){

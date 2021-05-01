@@ -6,6 +6,7 @@
 package com.pss.bonusfuncionario.Collection;
 
 import com.pss.bonusfuncionario.Model.FuncionarioModel;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,30 +40,50 @@ public class FuncionarioCollection {
     }
 
     public List<FuncionarioModel> lerFuncionario(String nomeFuncionario) {
-        List<FuncionarioModel> retornoFuncionarioCollection = new ArrayList<>();
-        for (FuncionarioModel funcionario : this.funcionarioCollection) {
-            if (funcionario.getNome().contains(nomeFuncionario)) {
-                retornoFuncionarioCollection.add(funcionario);
+        if (!funcionarioCollection.isEmpty()) {
+            List<FuncionarioModel> retornoFuncionarioCollection = new ArrayList<>();
+            for (FuncionarioModel funcionario : this.funcionarioCollection) {
+                if (funcionario.getNome().contains(nomeFuncionario)) {
+                    retornoFuncionarioCollection.add(funcionario);
+                }
             }
+            return retornoFuncionarioCollection;
+        }else{
+            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
         }
-        return retornoFuncionarioCollection;
     }
 
     public FuncionarioModel lerFuncionario(int id) throws IndexOutOfBoundsException {
-        if(!funcionarioCollection.isEmpty()){
+        if (!funcionarioCollection.isEmpty()) {
             return funcionarioCollection.get(id);
-        }else{
-            throw new IndexOutOfBoundsException("Lista Vazia");
+        } else {
+            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
         }
     }
-    
-    public void update(FuncionarioModel funcionario, int idFuncionario){
-        funcionarioCollection.add(idFuncionario, funcionario);
+
+    public List<FuncionarioModel> lerFuncionario(LocalDate dataAdmissao) {
+        if (!funcionarioCollection.isEmpty()) {
+            List<FuncionarioModel> retornoFuncionarioCollection = new ArrayList<>();
+            for (FuncionarioModel funcionario : this.funcionarioCollection) {
+                if (funcionario.getAdmissao().equals(dataAdmissao)) {
+                    retornoFuncionarioCollection.add(funcionario);
+                }
+            }
+            return retornoFuncionarioCollection;
+        } else {
+            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
+        }
     }
-    
-    public void excluir(int id){
+
+    public void update(FuncionarioModel funcionario, int idFuncionario) {
+        funcionarioCollection.remove(idFuncionario);
+        funcionarioCollection.add(idFuncionario, funcionario);
+
+    }
+
+    public void excluir(int id) {
         funcionarioCollection.remove(id);
-        for (int i = id; i < funcionarioCollection.size(); i++){
+        for (int i = id; i < funcionarioCollection.size(); i++) {
             funcionarioCollection.get(i).setId(i);
         }
     }

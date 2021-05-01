@@ -24,7 +24,7 @@ public class BonusTempoDeServicoModel implements IBonusModel {
     }
     
     @Override
-    public void calcular(HistoricoDeBonus bonus) throws MenorQueZeroException{
+    public void calcular(HistoricoDeBonus bonus) throws RuntimeException{
         long tempoDeServico = bonus.getAdmissao().until(bonus.getDataDoCalculo(), ChronoUnit.YEARS);
         if(tempoDeServico == 0){
             bonus.setPorcentagemBonusTempoDeServico(0);
@@ -45,7 +45,8 @@ public class BonusTempoDeServicoModel implements IBonusModel {
             bonus.setPorcentagemBonusTempoDeServico(0.15);
             bonus.calcularValorBonusFuncionarioDoMes();
         }else{
-            throw  new MenorQueZeroException();
+            throw  new RuntimeException("Tem algo errado aí irmão"
+                    + "\nserá que a data do calcula está certa?");
         }
     }
 }

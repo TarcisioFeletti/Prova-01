@@ -14,7 +14,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JDesktopPane;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,8 +34,8 @@ public class ManterFuncionarioPresenter {
         if (funcionario == null) {
             estado = new ManterFuncionarioInclusaoStatePresenter(this);
         } else {
-            estado = new ManterFuncionarioVisualizacaoStatePresenter(this);
             this.funcionario = funcionario;
+            estado = new ManterFuncionarioVisualizacaoStatePresenter(this);
         }
         tela.setVisible(true);
     }
@@ -72,7 +71,5 @@ public class ManterFuncionarioPresenter {
     public FuncionarioModel getFuncionario() {
         return funcionario;
     }
-    
-    
 
 }
