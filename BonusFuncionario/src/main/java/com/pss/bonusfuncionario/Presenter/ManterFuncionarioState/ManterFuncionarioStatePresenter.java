@@ -12,7 +12,7 @@ import com.pss.bonusfuncionario.View.ManterFuncionarioView;
  *
  * @author tarci
  */
-public abstract class ManterFuncionarioStatePresenter {
+public abstract class ManterFuncionarioStatePresenter{
 
     private ManterFuncionarioPresenter presenter;
 
@@ -20,19 +20,19 @@ public abstract class ManterFuncionarioStatePresenter {
         this.presenter = presenter;
     }
 
-    public void incluir() {
+    public void incluir(){
         throw new RuntimeException("Não é possivel incluir um registro a partir deste estado");
     }
 
-    public void exibir() {
+    public void exibir(){
         throw new RuntimeException("Não é possivel exibir um registro a partir deste estado");
     }
 
-    public void editar() {
+    public void editar(){
         throw new RuntimeException("Não é possivel editar um registro a partir deste estado");
     }
 
-    public void excluir() {
+    public void excluir(){
         throw new RuntimeException("Não é possivel excluir um registro a partir deste estado");
     }
 

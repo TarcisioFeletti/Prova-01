@@ -6,6 +6,7 @@
 package com.pss.bonusfuncionario.Collection;
 
 import com.pss.bonusfuncionario.Model.FuncionarioModel;
+import com.pss.bonusfuncionario.Presenter.TelaPrincipalPresenter;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,10 +18,12 @@ import java.util.List;
 public class FuncionarioCollection {
 
     private final List<FuncionarioModel> funcionarioCollection;
+    private TelaPrincipalPresenter observer;
     private static FuncionarioCollection instancia;
 
-    public FuncionarioCollection() {
+    private FuncionarioCollection() {
         funcionarioCollection = new ArrayList<>();
+        observer = TelaPrincipalPresenter.getInstancia();
     }
 
     public static FuncionarioCollection getInstancia() {
@@ -37,6 +40,7 @@ public class FuncionarioCollection {
     public void adicinarFuncionario(FuncionarioModel funcionario) {
         funcionario.setId(funcionarioCollection.size());
         funcionarioCollection.add(funcionario);
+        notificarObservers();
     }
 
     public List<FuncionarioModel> lerFuncionario(String nomeFuncionario) {
@@ -48,16 +52,16 @@ public class FuncionarioCollection {
                 }
             }
             return retornoFuncionarioCollection;
-        }else{
-            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
+        } else {
+            throw new IndexOutOfBoundsException("Uai voce não adicionou nada na lista");
         }
     }
 
-    public FuncionarioModel lerFuncionario(int id) throws IndexOutOfBoundsException {
+    public FuncionarioModel lerFuncionario(int idFuncionario) throws IndexOutOfBoundsException {
         if (!funcionarioCollection.isEmpty()) {
-            return funcionarioCollection.get(id);
+            return funcionarioCollection.get(idFuncionario);
         } else {
-            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
+            throw new IndexOutOfBoundsException("Uai voce não adicionou nada na lista");
         }
     }
 
@@ -71,21 +75,29 @@ public class FuncionarioCollection {
             }
             return retornoFuncionarioCollection;
         } else {
-            throw new IndexOutOfBoundsException("Uai voce não adicionaou nada na lista");
+            throw new IndexOutOfBoundsException("Uai voce não adicionou nada na lista");
         }
     }
 
     public void update(FuncionarioModel funcionario, int idFuncionario) {
+        funcionario.setHistoricoBonusCollection(funcionarioCollection.get(idFuncionario).getHistoricoBonusCollection());
+        funcionario.calculaSalarioFinal();
         funcionarioCollection.remove(idFuncionario);
         funcionarioCollection.add(idFuncionario, funcionario);
+        
 
     }
 
-    public void excluir(int id) {
-        funcionarioCollection.remove(id);
-        for (int i = id; i < funcionarioCollection.size(); i++) {
+    public void excluir(int idFuncionario) {
+        funcionarioCollection.remove(idFuncionario);
+        for (int i = idFuncionario; i < funcionarioCollection.size(); i++) {
             funcionarioCollection.get(i).setId(i);
         }
+        notificarObservers();
+    }
+
+    public void notificarObservers() {
+        observer.update(funcionarioCollection);
     }
 
 }

@@ -11,9 +11,8 @@ import java.time.LocalDate;
  *
  * @author tarci
  */
-public class HistoricoDeBonus {
+public class HistoricoDeBonusModel {
     private double salarioBase;
-    private double salarioFinal;
     private int bonusGeneroso;
     private double porcentagemBonusAssiduidade;
     private double porcentagemBonusCargo;
@@ -29,7 +28,7 @@ public class HistoricoDeBonus {
     private LocalDate dataDoCalculo;
     private LocalDate admissao;
 
-    public HistoricoDeBonus(double salarioBase, int bonusGeneroso, boolean funcionarioDoMes, 
+    public HistoricoDeBonusModel(double salarioBase, int bonusGeneroso, boolean funcionarioDoMes, 
         int numFaltas, String cargo, LocalDate dataDoCalculo, LocalDate admissao) {
         this.salarioBase = salarioBase;
         this.bonusGeneroso = bonusGeneroso;
@@ -46,10 +45,6 @@ public class HistoricoDeBonus {
 
     public double getSalarioBase() {
         return salarioBase;
-    }
-
-    public double getSalarioFinal() {
-        return salarioFinal;
     }
 
     public int getBonusGeneroso() {
@@ -92,10 +87,6 @@ public class HistoricoDeBonus {
         return admissao;
     }
 
-    public void setSalarioFinal(double salarioFinal) {
-        this.salarioFinal = salarioFinal;
-    }
-
     public void setPorcentagemBonusAssiduidade(double porcentagemBonusAssiduidade) {
         this.porcentagemBonusAssiduidade = porcentagemBonusAssiduidade;
     }
@@ -133,7 +124,7 @@ public class HistoricoDeBonus {
     }
 
     public void calcularValorBonusTempoDeServico() {
-        this.valorBonusTempoDeServico = this.porcentagemBonusFuncionarioDoMes*this.salarioBase;
+        this.valorBonusTempoDeServico = this.porcentagemBonusTempoDeServico*this.salarioBase;
     }
 
     public double getValorBonusFuncionarioDoMes() {
@@ -141,7 +132,7 @@ public class HistoricoDeBonus {
     }
 
     public void calcularValorBonusFuncionarioDoMes() {
-        this.valorBonusFuncionarioDoMes = this.porcentagemBonusTempoDeServico*this.salarioBase;
+        this.valorBonusFuncionarioDoMes = this.porcentagemBonusFuncionarioDoMes*this.salarioBase;
     }
     
     public double somarValorBonus(){

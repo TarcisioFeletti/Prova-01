@@ -15,21 +15,23 @@ import javax.swing.JOptionPane;
  *
  * @author tarci
  */
-public class ManterFuncionarioIncluirCommand extends ManterFuncionarioCommand{
+public class ManterFuncionarioIncluirCommand extends ManterFuncionarioCommand {
+
     @Override
-    public void executar(ManterFuncionarioPresenter presenter){
-        LocalDate date = LocalDate.of(Integer.parseInt(presenter.getView().getTxtFormatedFieldAdmissao().getText().substring(6,10)),
-                Integer.parseInt(presenter.getView().getTxtFormatedFieldAdmissao().getText().substring(3, 5)), 
+    public void executar(ManterFuncionarioPresenter presenter) {
+        LocalDate date = LocalDate.of(Integer.parseInt(presenter.getView().getTxtFormatedFieldAdmissao().getText().substring(6, 10)),
+                Integer.parseInt(presenter.getView().getTxtFormatedFieldAdmissao().getText().substring(3, 5)),
                 Integer.parseInt(presenter.getView().getTxtFormatedFieldAdmissao().getText().substring(0, 2)));
         FuncionarioCollection.getInstancia().adicinarFuncionario(
-        new FuncionarioModel(presenter.getView().getTxtFieldNome().getText(), 
-        Integer.parseInt(presenter.getView().getTxtFieldIdade().getText()),
-        date, 
-        Double.parseDouble(presenter.getView().getTxtFieldSalario().getText()),
-        presenter.getView().getCheckBoxFuncionarioDoMes().isSelected(), 
-        Integer.parseInt(presenter.getView().getTxtFieldFaltas().getText()),
-        presenter.getView().getComboBoxCargo().getSelectedItem().toString(),
-        presenter.getView().getComboBoxBonus().getSelectedIndex()));
+                new FuncionarioModel(presenter.getView().getTxtFieldNome().getText(),
+                        Integer.parseInt(presenter.getView().getTxtFieldIdade().getText()),
+                        date,
+                        Double.parseDouble(presenter.getView().getTxtFieldSalario().getText()),
+                        presenter.getView().getCheckBoxFuncionarioDoMes().isSelected(),
+                        Integer.parseInt(presenter.getView().getTxtFieldFaltas().getText()),
+                        presenter.getView().getComboBoxCargo().getSelectedItem().toString(),
+                        presenter.getView().getComboBoxBonus().getSelectedIndex()));
         JOptionPane.showMessageDialog(presenter.getView(), "Dado inserido com sucesso");
     }
+
 }

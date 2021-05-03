@@ -4,10 +4,11 @@
  * and open the template in the editor.
  */
 package com.pss.bonusfuncionario.Model;
+
 /**
  *
  * @author tarci
  */
 public interface IBonusModel {
-    public void calcular(HistoricoDeBonus bonus) throws RuntimeException;
+    public void calcular(HistoricoDeBonusModel bonus) throws RuntimeException;
 }

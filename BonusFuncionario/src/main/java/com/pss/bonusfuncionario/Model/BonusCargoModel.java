@@ -17,24 +17,25 @@ public class BonusCargoModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(HistoricoDeBonus bonus) {
+    public void calcular(HistoricoDeBonusModel bonus) {
+        int boostGeneroso = bonus.getBonusGeneroso()+1;
         if (bonus.getCargo().equalsIgnoreCase("Gerente")) {
-            bonus.setPorcentagemBonusCargo(0.15);
+            bonus.setPorcentagemBonusCargo(0.15*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }else if(bonus.getCargo().equalsIgnoreCase("Analista de TI")){
-            bonus.setPorcentagemBonusCargo(0.1);
+            bonus.setPorcentagemBonusCargo(0.1*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }else if(bonus.getCargo().equalsIgnoreCase("Supervisor")){
-            bonus.setPorcentagemBonusCargo(0.08);
+            bonus.setPorcentagemBonusCargo(0.08*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }else if(bonus.getCargo().equalsIgnoreCase("Programador")){
-            bonus.setPorcentagemBonusCargo(0.05);
+            bonus.setPorcentagemBonusCargo(0.05*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }else if(bonus.getCargo().equalsIgnoreCase("Trainee")){
-            bonus.setPorcentagemBonusCargo(0.02);
+            bonus.setPorcentagemBonusCargo(0.02*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }else if(bonus.getCargo().equalsIgnoreCase("Assistente")){
-            bonus.setPorcentagemBonusCargo(0.01);
+            bonus.setPorcentagemBonusCargo(0.01*boostGeneroso);
             bonus.calcularValorBonusCargo();
         }
     }

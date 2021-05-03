@@ -5,25 +5,35 @@
  */
 package com.pss.bonusfuncionario.Presenter;
 
-import com.pss.bonusfuncionario.View.BuscarFuncionarioView;
-import com.pss.bonusfuncionario.View.ManterFuncionarioView;
+import com.pss.bonusfuncionario.Model.FuncionarioModel;
 import com.pss.bonusfuncionario.View.TelaPrincipalView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JDesktopPane;
 
 /**
  *
  * @author tarci
  */
-public class TelaPrincipalPresenter {
+public class TelaPrincipalPresenter{
     private TelaPrincipalView tela;
+    private static TelaPrincipalPresenter instancia;
     
-    public TelaPrincipalPresenter(){
+    private TelaPrincipalPresenter(){
         tela = new TelaPrincipalView();
+        tela.getTxtFieldNumeroFuncionarios().setText("0");  
+        iniciarListeners();
     }
     
-    public void iniciarGUI(){
+    public static TelaPrincipalPresenter getInstancia(){
+        if(instancia == null){
+            instancia = new TelaPrincipalPresenter();
+        }
+        return instancia;
+    }
+    
+    private void iniciarListeners(){
         tela.getOpcaoManterFuncionario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -34,19 +44,24 @@ public class TelaPrincipalPresenter {
         tela.getOpcaoBuscarFuncionario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new BuscarFuncionarioPresenter().iniciarTela(tela.getDesktop());
+                new BuscarFuncionarioPresenter(tela.getDesktop());
             }
         });
         
         tela.getOpcaoCalcularSalario().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                new CalcularSalarioPresenter().iniciarTela(tela.getDesktop());
+                new CalcularSalarioPresenter(tela.getDesktop());
             }
         });
+        
     }
     
     public JDesktopPane getDesktop(){
         return tela.getDesktop();
+    }
+    
+    public void update(List<FuncionarioModel> funcionarioCollection){
+        this.tela.getTxtFieldNumeroFuncionarios().setText(String.valueOf(funcionarioCollection.size()));
     }
 }

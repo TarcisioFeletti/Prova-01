@@ -19,7 +19,7 @@ import javax.swing.JDesktopPane;
  *
  * @author tarci
  */
-public class ManterFuncionarioPresenter {
+public class ManterFuncionarioPresenter{
 
     private ManterFuncionarioView tela;
     private ManterFuncionarioStatePresenter estado;
@@ -50,12 +50,24 @@ public class ManterFuncionarioPresenter {
     }
 
     public void removerListeners() {
-        tela.getBtnSalvar().removeAll();
-        tela.getBtnExcluir().removeAll();
-        tela.getBtnEditar().removeAll();
+        if (tela.getBtnSalvar().getActionListeners() != null) {
+            for (ActionListener actionListener : tela.getBtnSalvar().getActionListeners()) {
+                tela.getBtnSalvar().removeActionListener(actionListener);
+            }
+        }
+        if (tela.getBtnEditar().getActionListeners() != null) {
+            for (ActionListener actionListener : tela.getBtnSalvar().getActionListeners()) {
+                tela.getBtnSalvar().removeActionListener(actionListener);
+            }
+        }
+        if (tela.getBtnExcluir().getActionListeners() != null) {
+            for (ActionListener actionListener : tela.getBtnSalvar().getActionListeners()) {
+                tela.getBtnSalvar().removeActionListener(actionListener);
+            }
+        }
     }
 
-    public void centralizar(JDesktopPane desktop) {
+    private void centralizar(JDesktopPane desktop) {
         Dimension d = desktop.getSize();
         this.tela.setLocation((d.width - this.tela.getSize().width) / 2, (d.height - this.tela.getSize().height) / 2);
     }
@@ -72,4 +84,30 @@ public class ManterFuncionarioPresenter {
         return funcionario;
     }
 
+    public boolean verificaCampos() {
+        if (tela.getTxtFieldNome().getText().isEmpty()) {
+            return false;
+        }
+        if (tela.getTxtFieldIdade().getText().isEmpty()) {
+            return false;
+        }
+        if (verificaData(tela.getTxtFormatedFieldAdmissao().getText())) {
+            return false;
+        }
+        if (tela.getTxtFieldSalario().getText().isEmpty()) {
+            return false;
+        }
+        if (tela.getTxtFieldFaltas().getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean verificaData(String verifica) {
+        if (verifica.substring(6, 10).isBlank() && verifica.substring(3, 5).isBlank() && verifica.substring(0, 2).isBlank()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
