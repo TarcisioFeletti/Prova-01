@@ -17,15 +17,16 @@ public class BonusAssiduidadeModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(HistoricoDeBonus bonus) throws RuntimeException{
+    public void calcular(HistoricoDeBonusModel bonus) throws RuntimeException{
+        int boostGeneroso = bonus.getBonusGeneroso()+1;
         if (bonus.getNumFaltas()== 0) {
-            bonus.setPorcentagemBonusAssiduidade(0.1);
+            bonus.setPorcentagemBonusAssiduidade(0.1*boostGeneroso);
             bonus.calcularValorBonusAssiduidade();
         } else if (bonus.getNumFaltas()>= 1 && bonus.getNumFaltas()<= 3) {
-            bonus.setPorcentagemBonusAssiduidade(0.05);
+            bonus.setPorcentagemBonusAssiduidade(0.05*boostGeneroso);
             bonus.calcularValorBonusAssiduidade();
         } else if (bonus.getNumFaltas()>= 4) {
-            bonus.setPorcentagemBonusAssiduidade(0.01);
+            bonus.setPorcentagemBonusAssiduidade(0.01*boostGeneroso);
             bonus.calcularValorBonusAssiduidade();
         } else {
             throw new RuntimeException("Nunca vi uma pessoa ter menos de 0 faltas");

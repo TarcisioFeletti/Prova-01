@@ -33,6 +33,7 @@ public class ManterFuncionarioVisualizacaoStatePresenter extends ManterFuncionar
         presenter.getView().getComboBoxCargo().setEnabled(false);
         presenter.getView().getCheckBoxFuncionarioDoMes().setEnabled(false);
         this.exibir();
+        super.getPresenter().removerListeners();
         iniciarListeners();
     }
 

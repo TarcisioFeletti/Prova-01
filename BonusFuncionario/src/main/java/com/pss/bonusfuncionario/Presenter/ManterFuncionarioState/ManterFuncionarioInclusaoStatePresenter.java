@@ -10,6 +10,7 @@ import com.pss.bonusfuncionario.Presenter.ManterFuncionarioPresenter;
 import com.pss.bonusfuncionario.View.ManterFuncionarioView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,16 +37,19 @@ public class ManterFuncionarioInclusaoStatePresenter extends ManterFuncionarioSt
         presenter.getView().getTxtFormatedFieldAdmissao().setText("");
         presenter.getView().getTxtFieldFaltas().setText("");
         presenter.getView().getTxtFieldIdade().setText("");
-        //super.getPresenter().removerListeners();
+        super.getPresenter().removerListeners();
         iniciarListener(super.getPresenter().getView());
     }
 
     @Override
     public void incluir() {
-
-        new ManterFuncionarioIncluirCommand().executar(super.getPresenter());
-
-        super.fechar(super.getPresenter().getView());
+        if (super.getPresenter().verificaCampos()) {
+            new ManterFuncionarioIncluirCommand().executar(super.getPresenter());
+            super.fechar(super.getPresenter().getView());
+        }else{
+            JOptionPane.showMessageDialog(super.getPresenter().getView(), "Acho que voce esqueceu alguma coisa"
+                    + "\n Todos os campos foram preenchidos?");
+        }
     }
 
     public void iniciarListener(ManterFuncionarioView tela) {
@@ -56,4 +60,5 @@ public class ManterFuncionarioInclusaoStatePresenter extends ManterFuncionarioSt
             }
         });
     }
+
 }

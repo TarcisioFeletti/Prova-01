@@ -36,12 +36,10 @@ public class HistoricoBonusView extends javax.swing.JDialog {
         txtFieldNome = new javax.swing.JTextField();
         lblCargo = new javax.swing.JLabel();
         txtFieldCargo = new javax.swing.JTextField();
-        btnFechar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableBonus = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(650, 450));
 
         lblNome.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
         lblNome.setText("Nome");
@@ -54,8 +52,6 @@ public class HistoricoBonusView extends javax.swing.JDialog {
 
         txtFieldCargo.setEditable(false);
         txtFieldCargo.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
-
-        btnFechar.setText("Fechar");
 
         tableBonus.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -82,10 +78,7 @@ public class HistoricoBonusView extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtFieldCargo, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(txtFieldNome)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnFechar)))
+                            .addComponent(txtFieldNome))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -100,18 +93,13 @@ public class HistoricoBonusView extends javax.swing.JDialog {
                     .addComponent(lblCargo)
                     .addComponent(txtFieldCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnFechar)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public JButton getBtnFechar() {
-        return btnFechar;
-    }
+
 
     public JTable getTableBonus() {
         return tableBonus;
@@ -126,7 +114,6 @@ public class HistoricoBonusView extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnFechar;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCargo;
     private javax.swing.JLabel lblNome;

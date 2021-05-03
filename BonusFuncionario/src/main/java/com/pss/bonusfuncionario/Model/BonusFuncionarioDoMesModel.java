@@ -17,12 +17,13 @@ public class BonusFuncionarioDoMesModel implements IBonusModel {
     }
 
     @Override
-    public void calcular(HistoricoDeBonus bonus) {
+    public void calcular(HistoricoDeBonusModel bonus) {
+        int boostGeneroso = bonus.getBonusGeneroso()+1;
         if (bonus.isFuncionarioDoMes()){
-            bonus.setPorcentagemBonusFuncionarioDoMes(0.1);
+            bonus.setPorcentagemBonusFuncionarioDoMes(0.1*boostGeneroso);
             bonus.calcularValorBonusFuncionarioDoMes();
         }else{
-            bonus.setPorcentagemBonusFuncionarioDoMes(0);
+            bonus.setPorcentagemBonusFuncionarioDoMes(0*boostGeneroso);
             bonus.calcularValorBonusFuncionarioDoMes();
         }
     }

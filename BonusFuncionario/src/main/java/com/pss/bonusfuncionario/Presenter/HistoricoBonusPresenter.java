@@ -6,12 +6,11 @@
 package com.pss.bonusfuncionario.Presenter;
 
 import com.pss.bonusfuncionario.Model.FuncionarioModel;
-import com.pss.bonusfuncionario.Model.HistoricoDeBonus;
+import com.pss.bonusfuncionario.Model.HistoricoDeBonusModel;
 import com.pss.bonusfuncionario.View.HistoricoBonusView;
 import java.awt.Dimension;
 import java.awt.Frame;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JDesktopPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -20,39 +19,34 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author tarci
  */
-public class HistoricoBonusPresenter {
+public class HistoricoBonusPresenter{
 
     private HistoricoBonusView tela;
     private FuncionarioModel funcionario;
 
-    public HistoricoBonusPresenter(FuncionarioModel funcionario) {
+    public HistoricoBonusPresenter(FuncionarioModel funcionario,JDesktopPane desktop) {
         tela = new HistoricoBonusView(new Frame(), true);
         this.funcionario = funcionario;
+        iniciarDialog(desktop);
     }
 
-    public void iniciarDialog(JDesktopPane desktop) {
+    private void iniciarDialog(JDesktopPane desktop) {
         centralizar(desktop);
-        tela.setVisible(true);
         tela.getTxtFieldNome().setText(funcionario.getNome());        
         tela.getTxtFieldCargo().setText(funcionario.getCargo());
         JTable table = tela.getTableBonus();
         DefaultTableModel model = (DefaultTableModel) table.getModel();
-        for (HistoricoDeBonus bonus : funcionario.getBonusCollection()) {
+        for (HistoricoDeBonusModel bonus : funcionario.getHistoricoBonusCollection()) {
             model.addRow(new Object[]{"Assiduidade", bonus.getPorcentagemBonusAssiduidade(), 
-                         bonus.getPorcentagemBonusAssiduidade()*bonus.getSalarioBase(), bonus.getDataDoCalculo()});
+                         bonus.getPorcentagemBonusAssiduidade()*bonus.getSalarioBase(), bonus.getDataDoCalculo().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()});
             model.addRow(new Object[]{"Cargo", bonus.getPorcentagemBonusCargo(), 
-                         bonus.getPorcentagemBonusCargo()*bonus.getSalarioBase(), bonus.getDataDoCalculo()});
+                         bonus.getPorcentagemBonusCargo()*bonus.getSalarioBase(), bonus.getDataDoCalculo().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()});
             model.addRow(new Object[]{"Funcionario Do Mes", bonus.getPorcentagemBonusFuncionarioDoMes(), 
-                         bonus.getPorcentagemBonusFuncionarioDoMes()*bonus.getSalarioBase(), bonus.getDataDoCalculo()});
+                         bonus.getPorcentagemBonusFuncionarioDoMes()*bonus.getSalarioBase(), bonus.getDataDoCalculo().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()});
             model.addRow(new Object[]{"Tempo de Serviço", bonus.getPorcentagemBonusTempoDeServico(), 
-                         bonus.getPorcentagemBonusTempoDeServico()*bonus.getSalarioBase(), bonus.getDataDoCalculo()});
+                         bonus.getPorcentagemBonusTempoDeServico()*bonus.getSalarioBase(), bonus.getDataDoCalculo().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")).toString()});
         }
-        tela.getBtnFechar().addActionListener(new ActionListener(){
-           @Override
-           public void actionPerformed(ActionEvent e){
-               tela.dispose();
-           }
-        });
+        tela.setVisible(true);
     }
 
     private void centralizar(JDesktopPane desktop) {

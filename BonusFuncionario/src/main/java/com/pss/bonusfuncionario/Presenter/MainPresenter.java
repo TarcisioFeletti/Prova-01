@@ -12,6 +12,6 @@ package com.pss.bonusfuncionario.Presenter;
  */
 public class MainPresenter {    
     public static void main(String[] args){
-        new TelaPrincipalPresenter().iniciarGUI();
+        TelaPrincipalPresenter.getInstancia();
     }
 }
